@@ -6,6 +6,7 @@ from __future__ import print_function
 
 import datetime
 import json
+import logging
 import pytz
 import sqlite3
 import time
@@ -49,13 +50,13 @@ def calculated_datetime(tzdata):
 
 def fetch_data():
 	lat, lng = fetch_iss_location()
-	print(lat, lng)
+	logging.debug('ll=%r, %r', lat, lng)
 
 	tzdata = fetch_timezone(lat, lng)
-	print(tzdata)
+	logging.debug('tzdata=%r', tzdata)
 
 	issnow, description = calculated_datetime(tzdata)
-	print(issnow, description)
+	logging.debug('issnow=%r desc=%r', issnow, description)
 
 	return (lat, lng, tzdata, issnow, description)
 
@@ -79,4 +80,5 @@ def fetch_and_store():
 	store_data(*data)
 
 if __name__ == '__main__':
+	logging.basicConfig(level=logging.INFO)
 	fetch_and_store()
