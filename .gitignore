@@ -1,0 +1,3 @@
+*.pyc
+iss_time.db
+iss_time/secrets.py
