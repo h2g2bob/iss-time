@@ -1,8 +1,5 @@
 """
 What time is it on the ISS?
-
-sqlite> CREATE TABLE datapoints (nowutc INTEGER, lat REAL, lng REAL, tzdata TEXT, issnow TEXT, description TEXT, tzabbr TEXT, country TEXT);
-sqlite> CREATE INDEX idx_datapoints_utc ON datapoints(nowutc);
 """
 
 from __future__ import print_function
@@ -15,7 +12,7 @@ import time
 import urllib2
 
 from .constants import ISS_TIME_DB
-from .secrets import TIMEZONEDB_KEY  # Free api key
+from .secrets import TIMEZONEDB_KEY
 
 
 def fetch_iss_location():
